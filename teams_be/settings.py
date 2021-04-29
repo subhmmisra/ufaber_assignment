@@ -31,6 +31,7 @@ ALLOWED_HOSTS = ['127.0.0.1', 'ufaber-task.herokuapp.com']
 # Application definition
 
 INSTALLED_APPS = [
+    'whitenoise.runserver_nostatic',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -153,6 +154,7 @@ USE_TZ = True
 
 
 STATIC_URL = '/static/'
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedStaticFilesStorage'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles') #this is not used
 # Add static folder to STATIC_DIRS
 STATICFILES_DIRS = [
