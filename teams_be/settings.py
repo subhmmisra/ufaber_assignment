@@ -86,6 +86,7 @@ DATABASES = {
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
+BASE_URL = "https://ufaber-task.herokuapp.com/"
 
 # rest_framework
 # ------------------------------------------------------------------------------

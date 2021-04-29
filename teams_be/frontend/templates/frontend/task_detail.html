@@ -133,7 +133,7 @@
 		function buildList(){
 			var wrapper = document.getElementById('list-wrapper')
 
-			var url = `http://127.0.0.1:8000/api/tasks/${proId}`
+			var url = `https://ufaber-task.herokuapp.com/api/tasks/${proId}`
 
 			fetch(url)
 			.then((resp) => resp.json())
@@ -160,12 +160,12 @@
     				end_date.innerHTML = "Will be completed by: "+ list.end_date;
 
     				edit_link = document.getElementById("edit_link")
-    				edit_url = `http://127.0.0.1:8000/projects/${list.project.id}/tasks/edit/${list.id}`
+    				edit_url = `https://ufaber-task.herokuapp.com/projects/${list.project.id}/tasks/edit/${list.id}`
     				console.log(edit_url)
     				edit_link.setAttribute("href", edit_url)
 
     				project_link = document.getElementById("project-link")
-    				edit_url = `http://127.0.0.1:8000/projects/${list.project.id}`
+    				edit_url = `https://ufaber-task.herokuapp.com/projects/${list.project.id}`
     				console.log(edit_url)
     				project_link.setAttribute("href", edit_url)
 				}

@@ -151,7 +151,7 @@
 		function buildList(){
 			var wrapper = document.getElementById('list-wrapper')
 
-			var url = `http://127.0.0.1:8000/api/tasks/${proId}`
+			var url = `https://ufaber-task.herokuapp.com/api/tasks/${proId}`
 
 			fetch(url)
 			.then((resp) => resp.json())
@@ -202,8 +202,8 @@
     			start_date.value = list.start_date
     			end_date.value = list.end_date
 
-    			task_url = `http://127.0.0.1:8000/projects/${list.project.id}/tasks/${proId}`
-    			project_url = `http://127.0.0.1:8000/projects/${list.project.id}`
+    			task_url = `https://ufaber-task.herokuapp.com/projects/${list.project.id}/tasks/${proId}`
+    			project_url = `https://ufaber-task.herokuapp.com/projects/${list.project.id}`
     			project_link.setAttribute("href", project_url)
     			task_link.setAttribute("href", task_url)
 
@@ -215,7 +215,7 @@
 		form.addEventListener('submit', function(e){
 			e.preventDefault()
 			console.log('Form submitted')
-			var url = `http://127.0.0.1:8000/api/tasks/${proId}`
+			var url = `https://ufaber-task.herokuapp.com/api/tasks/${proId}`
 
 
 			var title = document.getElementById('title').value

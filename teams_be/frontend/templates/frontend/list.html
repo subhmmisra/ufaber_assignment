@@ -163,7 +163,7 @@
 
 
 
-			var url = 'http://127.0.0.1:8000/api/projects'
+			var url = 'https://ufaber-task.herokuapp.com/api/projects'
 
 			fetch(url)
 			.then((resp) => resp.json())
@@ -201,7 +201,7 @@
 							</div>
 
 							<div style="flex:1">
-								<a href="http://127.0.0.1:8000/projects/${list[i].id}" ><button class="btn btn-sm btn-outline-info edit" href='project_url'>View </button></a>
+								<a href="https://ufaber-task.herokuapp.com/projects/${list[i].id}" ><button class="btn btn-sm btn-outline-info edit" href='project_url'>View </button></a>
 							</div>
 							<div style="flex:1">
 								<button class="btn btn-sm btn-outline-dark delete">-</button>
@@ -246,7 +246,7 @@
 		form.addEventListener('submit', function(e){
 			e.preventDefault()
 			console.log('Form submitted')
-			var url = 'http://127.0.0.1:8000/api/projects'
+			var url = 'https://ufaber-task.herokuapp.com/api/projects'
 
 			var title = document.getElementById('title').value
 			var description = document.getElementById('description').value
@@ -271,7 +271,7 @@
 
 		function deleteItem(item){
 			console.log('Delete clicked')
-			fetch(`http://127.0.0.1:8000/api/projects/${item.id}`, {
+			fetch(`https://ufaber-task.herokuapp.com/api/projects/${item.id}`, {
 				method:'DELETE',
 				headers:{
 					'Content-type':'application/json',
