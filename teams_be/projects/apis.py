@@ -4,6 +4,7 @@ from rest_framework.decorators import action
 from teams_be.base import response
 from teams_be.base.apis.mixins import MultipleSerializerMixin
 from teams_be.base.apis.pagination import paginated_response
+from teams_be.base.exceptions import BadRequest
 from teams_be.projects.models import Project
 from teams_be.projects.serializers import ProjectCreateUpdateSerializer, ProjectResponseSerializer
 from teams_be.tasks.serializers import TaskResponseSerializer
@@ -35,18 +36,11 @@ class ProjectViewSet(
         )
         return response.Created(response_serializer.data)
 
-    def update(self, request, *args, **kwargs):
-        serializer = self.get_serializer(data=request.data)
-        serializer.is_valid(raise_exception=True)
-        task_obj = serializer.save()
-        response_serializer = self.serializer_class(
-            task_obj, context=self.get_serializer_context()
-        )
-        return response.Ok(response_serializer.data)
-
     @action(methods=["GET"], detail=True, url_path="tasks")
     def tasks(self, request, *args, **kwargs):
         project_obj = self.get_object()
+        if not project_obj:
+            raise BadRequest("project does not exists")
         tasks = project_tasks(project_obj)
 
         serializer = paginated_response(

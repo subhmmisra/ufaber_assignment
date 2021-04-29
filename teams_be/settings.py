@@ -25,13 +25,13 @@ SECRET_KEY = '@%@6u&qqfio)q68%&bn)skh)sy-$+13%m_id)-&fo=3$ed-&+d'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['127.0.0.1', 'ufaber-task.herokuapp.com']
+ALLOWED_HOSTS = ['127.0.0.1', 'ufaber-task.herokuapp.com'] # TODO: setup environ variable for this section
 
 
 # Application definition
 
 INSTALLED_APPS = [
-    'whitenoise.runserver_nostatic',
+    'whitenoise.runserver_nostatic', # for handling the static contents
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -58,6 +58,7 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'teams_be.urls'
 
+# Templates handling
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
@@ -86,38 +87,14 @@ DATABASES = {
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
-BASE_URL = "https://ufaber-task.herokuapp.com/"
+#BASE_URL = "https://ufaber-task.herokuapp.com/"
 
 # rest_framework
 # ------------------------------------------------------------------------------
 REST_FRAMEWORK = {
     "DEFAULT_PAGINATION_CLASS": "teams_be.base.apis.pagination.PageNumberPagination",
     "PAGE_SIZE": 30,
-    # Default renderer classes for Rest framework
-    # "DEFAULT_RENDERER_CLASSES": [
-    #     "myplace.base.renderers.MyplaceApiRenderer",
-    #     "rest_framework.renderers.JSONRenderer",
-    #     "rest_framework.renderers.BrowsableAPIRenderer",
-    # ],
-    # # "Accept" header based versioning
-    # # http://www.django-rest-framework.org/api-guide/versioning/
-    # "DEFAULT_VERSIONING_CLASS": "rest_framework.versioning.AcceptHeaderVersioning",
-    # "DEFAULT_VERSION": "1.0",
-    # "ALLOWED_VERSIONS": ["1.0"],
-    # "VERSION_PARAMETER": "version",
-    # # Use Django's standard `django.contrib.auth` permissions,
-    # # or allow read-only access for unauthenticated users.
-    # "DEFAULT_PERMISSION_CLASSES": ["myplace.users.auth.permissions.IsVerified"],
-    # "DEFAULT_THROTTLE_CLASSES": ["rest_framework.throttling.AnonRateThrottle"],
-    # "DEFAULT_THROTTLE_RATES": {"anon": "10000/day"},
-    # "DEFAULT_AUTHENTICATION_CLASSES": (
-    #     # Primary api authentication
-    #     "knox.auth.TokenAuthentication",
-    #     # Mainly used for api debug.
-    #     "rest_framework.authentication.SessionAuthentication",
-    # ),
-    # "DEFAULT_SCHEMA_CLASS": "rest_framework.schemas.coreapi.AutoSchema",
-    # "EXCEPTION_HANDLER": "myplace.base.exceptions.exception_handler",
+    "EXCEPTION_HANDLER": "teams_be.base.exceptions.exception_handler",
 }
 
 
